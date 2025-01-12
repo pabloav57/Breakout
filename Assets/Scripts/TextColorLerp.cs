@@ -12,7 +12,6 @@ public class TextColorLerp : MonoBehaviour
     void Start()
     {
         StartCoroutine("ChangeColor");
-        ChangeColor();
     }
 
     IEnumerator ChangeColor()
@@ -24,6 +23,7 @@ public class TextColorLerp : MonoBehaviour
             msg.color = Color.Lerp(Color.black, Color.white, t/duration);
             yield return null;
         }
-
+        // Reiniciar corutina
+        StartCoroutine("ChangeColor");
     }
 }
