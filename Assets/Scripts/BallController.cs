@@ -8,7 +8,10 @@ public class BallController : MonoBehaviour
     Rigidbody2D rb;
     AudioSource sfx;
 
+    int hitCount = 0;
+
     [SerializeField] float force;
+    [SerializeField] float forceInc;
     [SerializeField] float delay;
     [SerializeField] float hitOffset;
 
@@ -86,6 +89,15 @@ public class BallController : MonoBehaviour
                 (rb.linearVelocity.x > 0) && contact.x < (paddle.x - hitOffset))
             {
                 rb.linearVelocity = new UnityEngine.Vector2(-rb.linearVelocity.x, rb.linearVelocity.y);
+            }
+
+            // Increment the hit count
+            hitCount++;
+            if(hitCount % 4 == 0)
+            {
+                Debug.Log(hitCount + " -> Incremento Velocidad");
+                rb.AddForce(rb.linearVelocity.normalized * forceInc, ForceMode2D.Impulse);
+
             }
         }
 

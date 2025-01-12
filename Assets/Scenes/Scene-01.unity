@@ -766,8 +766,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 408754664}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.0241884, y: 0.7322876, z: 0.0352506}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.5292617, y: 0.9432921, z: 0.032202452}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -779,7 +779,7 @@ Transform:
   - {fileID: 785533609}
   - {fileID: 910534742}
   - {fileID: 1866847186}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1031660734}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &414368959
 GameObject:
@@ -1102,8 +1102,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 636461750}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.7355077, y: -1.1086717, z: 0.010061706}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.240581, y: -0.89766717, z: 0.0070135575}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1115,7 +1115,7 @@ Transform:
   - {fileID: 125438616}
   - {fileID: 863533470}
   - {fileID: 1730852363}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1031660734}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &640101691 stripped
 Transform:
@@ -1584,6 +1584,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 1
+  forceInc: 0.25
   delay: 0
   hitOffset: 0
   game: {fileID: 724212059}
@@ -1953,6 +1954,41 @@ Transform:
   m_LocalScale: {x: 1, y: 0.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1031660733
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1031660734}
+  m_Layer: 0
+  m_Name: Bricks
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1031660734
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1031660733}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.49492666, y: -0.21100448, z: 0.003048149}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 636461751}
+  - {fileID: 1321275643}
+  - {fileID: 1965696866}
+  - {fileID: 408754665}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1053199523
@@ -2376,8 +2412,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1321275642}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.6675371, y: 0.26014093, z: 0.032865107}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.17261043, y: 0.4711454, z: 0.029816959}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2389,7 +2425,7 @@ Transform:
   - {fileID: 529932744}
   - {fileID: 362163603}
   - {fileID: 206447796}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1031660734}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1333053783 stripped
 Transform:
@@ -3287,8 +3323,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1965696865}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.0241884, y: 0.7322876, z: 0.0352506}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.5292617, y: 0.9432921, z: 0.032202452}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3300,7 +3336,7 @@ Transform:
   - {fileID: 302900424}
   - {fileID: 18530226}
   - {fileID: 208956876}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1031660734}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1998241832
 PrefabInstance:
@@ -3790,10 +3826,7 @@ SceneRoots:
   - {fileID: 6228364}
   - {fileID: 1217671283}
   - {fileID: 954802333}
-  - {fileID: 636461751}
-  - {fileID: 1321275643}
-  - {fileID: 1965696866}
-  - {fileID: 408754665}
+  - {fileID: 1031660734}
   - {fileID: 894825570}
   - {fileID: 1434133117}
   - {fileID: 218009353}
