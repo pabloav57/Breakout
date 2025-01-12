@@ -8,7 +8,12 @@ public class BallController : MonoBehaviour
     Rigidbody2D rb;
     AudioSource sfx;
 
-    int hitCount = 0;
+    int hitCount;
+
+    //[SerializeField] Transform paddle;
+
+    GameObject paddle;
+    bool halved;
 
     [SerializeField] float force;
     [SerializeField] float forceInc;
@@ -36,6 +41,10 @@ public class BallController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
         sfx = GetComponent<AudioSource>();
+
+        GameObject.FindGameObjectsWithTag("paddle");
+
+        paddle = GameObject.FindWithTag("paddle");
 
         Invoke("LaunchBall", delay);
     }
@@ -105,6 +114,13 @@ public class BallController : MonoBehaviour
 
             sfx.clip = sfxWall;
             sfx.Play();
+
+            if(!halved && tag == "wall-top")
+            {
+                // Reducir el tamaño de la pala
+                HalvePaddle(true);
+
+            }
         }
     }
 
@@ -116,7 +132,20 @@ public class BallController : MonoBehaviour
             sfx.Play();
             game.UpdateLifes(-1);
 
+            // Restaurar la pala a su tamaño original
+            if(halved)
+            HalvePaddle(false);
+
             Invoke("LaunchBall", delay);
         }
+    }
+
+    void HalvePaddle(bool halve)
+    {
+        halved = halve;
+        UnityEngine.Vector3 scale = paddle.transform.localScale;
+        paddle.transform.localScale = halved ?
+            new UnityEngine.Vector3(scale.x * 0.5f, scale.y, scale.z):
+            new UnityEngine.Vector3(scale.x * 2f, scale.y, scale.z);
     }
 }

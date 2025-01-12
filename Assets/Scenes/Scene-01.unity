@@ -1583,6 +1583,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5d877115a9c8ae4ca92b47d013f4d0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paddle: {fileID: 954802333}
   force: 1
   forceInc: 0.25
   delay: 0
