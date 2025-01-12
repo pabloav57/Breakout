@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections.Generic;
-using System.Numerics;
 
 public class BallController : MonoBehaviour
 {
@@ -42,8 +41,6 @@ public class BallController : MonoBehaviour
 
         sfx = GetComponent<AudioSource>();
 
-        GameObject.FindGameObjectsWithTag("paddle");
-
         paddle = GameObject.FindWithTag("paddle");
 
         Invoke("LaunchBall", delay);
@@ -58,13 +55,13 @@ public class BallController : MonoBehaviour
     private void LaunchBall()
     {
         // reset position and velocity
-        transform.position = UnityEngine.Vector3.zero;
-        rb.linearVelocity = UnityEngine.Vector2.zero;
+        transform.position = Vector3.zero;
+        rb.linearVelocity = Vector2.zero;
 
         // get random direction
         float dirX, dirY = -1;
         dirX = Random.Range(0,2) == 0 ? -1 : 1;
-        UnityEngine.Vector2 dir = new UnityEngine.Vector2(dirX, dirY);
+        Vector2 dir = new Vector2(dirX, dirY);
         dir.Normalize();
 
         // apply force
@@ -92,12 +89,12 @@ public class BallController : MonoBehaviour
             UnityEngine.Vector3 paddle = other.gameObject.transform.position;
 
             // get the contact point
-            UnityEngine.Vector2 contact = other.GetContact(0).point;
+            Vector2 contact = other.GetContact(0).point;
 
             if((rb.linearVelocity.x < 0) && contact.x > (paddle.x + hitOffset) || 
                 (rb.linearVelocity.x > 0) && contact.x < (paddle.x - hitOffset))
             {
-                rb.linearVelocity = new UnityEngine.Vector2(-rb.linearVelocity.x, rb.linearVelocity.y);
+                rb.linearVelocity = new Vector2(-rb.linearVelocity.x, rb.linearVelocity.y);
             }
 
             // Increment the hit count
@@ -145,7 +142,7 @@ public class BallController : MonoBehaviour
         halved = halve;
         UnityEngine.Vector3 scale = paddle.transform.localScale;
         paddle.transform.localScale = halved ?
-            new UnityEngine.Vector3(scale.x * 0.5f, scale.y, scale.z):
-            new UnityEngine.Vector3(scale.x * 2f, scale.y, scale.z);
+            new Vector3(scale.x * 0.5f, scale.y, scale.z):
+            new Vector3(scale.x * 2f, scale.y, scale.z);
     }
 }
