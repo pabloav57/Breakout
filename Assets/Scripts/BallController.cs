@@ -31,7 +31,8 @@ public class BallController : MonoBehaviour
         {"brick-y", 10},
         {"brick-g", 15},
         {"brick-a", 20},
-        {"brick-r", 25}
+        {"brick-r", 25},
+        {"brick-pass", 25}
     };
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -44,12 +45,6 @@ public class BallController : MonoBehaviour
         paddle = GameObject.FindWithTag("paddle");
 
         Invoke("LaunchBall", delay);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     private void LaunchBall()
@@ -73,11 +68,7 @@ public class BallController : MonoBehaviour
 
         if(bricks.ContainsKey(tag))
         {
-            sfx.clip = sfxBrick;
-            sfx.Play();
-            // update player score
-            game.UpdateScore(bricks[tag]);
-            Destroy(other.gameObject);
+            DestroyBrick(other.gameObject);
         }
 
         else if(tag == "paddle")
@@ -107,7 +98,7 @@ public class BallController : MonoBehaviour
             }
         }
 
-        else if(tag == "wall-top" || tag == "wall-lateral"){
+        else if(tag == "wall-top" || tag == "wall-lateral" || tag == "brick-rock"){
 
             sfx.clip = sfxWall;
             sfx.Play();
@@ -135,6 +126,21 @@ public class BallController : MonoBehaviour
 
             Invoke("LaunchBall", delay);
         }
+
+        else if(other.tag == "brick-pass")
+        {
+            DestroyBrick(other.gameObject);
+        }
+    }
+
+    void DestroyBrick(GameObject obj)
+    {
+                    sfx.clip = sfxBrick;
+            sfx.Play();
+            // update player score
+            game.UpdateScore(bricks[obj.tag]);
+
+            Destroy(obj);
     }
 
     void HalvePaddle(bool halve)
