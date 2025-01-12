@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class BallController : MonoBehaviour
 {
@@ -8,6 +9,10 @@ public class BallController : MonoBehaviour
     AudioSource sfx;
 
     int hitCount;
+
+    int brickCount;
+
+    int sceneId;
 
     //[SerializeField] Transform paddle;
 
@@ -19,12 +24,11 @@ public class BallController : MonoBehaviour
     [SerializeField] float delay;
     [SerializeField] float hitOffset;
 
-    [SerializeField] GameController game;
-
     [SerializeField] AudioClip sfxPaddle;
     [SerializeField] AudioClip sfxBrick;
     [SerializeField] AudioClip sfxWall;
     [SerializeField] AudioClip sfxFail;
+    [SerializeField] AudioClip sfxNextLevel;
 
     Dictionary<string, int> bricks = new Dictionary<string, int>
     {
@@ -38,6 +42,7 @@ public class BallController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        sceneId = SceneManager.GetActiveScene().buildIndex;
         rb = GetComponent<Rigidbody2D>();
 
         sfx = GetComponent<AudioSource>();
@@ -118,7 +123,7 @@ public class BallController : MonoBehaviour
         {
             sfx.clip = sfxFail;
             sfx.Play();
-            game.UpdateLifes(-1);
+            GameController.UpdateLifes(-1);
 
             // Restaurar la pala a su tamaño original
             if(halved)
@@ -138,9 +143,21 @@ public class BallController : MonoBehaviour
                     sfx.clip = sfxBrick;
             sfx.Play();
             // update player score
-            game.UpdateScore(bricks[obj.tag]);
+            GameController.UpdateScore(bricks[obj.tag]);
 
             Destroy(obj);
+
+            ++brickCount;
+            if(brickCount == GameController.totalBricks[sceneId])
+            {
+                sfx.clip = sfxNextLevel;
+                sfx.Play();
+
+                rb.linearVelocity = Vector2.zero;
+                GetComponent<SpriteRenderer>().enabled = false;
+
+                Invoke("NextScene", 3);
+            }
     }
 
     void HalvePaddle(bool halve)
@@ -150,5 +167,14 @@ public class BallController : MonoBehaviour
         paddle.transform.localScale = halved ?
             new Vector3(scale.x * 0.5f, scale.y, scale.z):
             new Vector3(scale.x * 2f, scale.y, scale.z);
+    }
+
+    void NextScene()
+    {
+        int nextId = sceneId + 1;
+        if(nextId == GameController.totalBricks.Count)
+            nextId = 0;
+
+        SceneManager.LoadScene(sceneId + 1);
     }
 }
