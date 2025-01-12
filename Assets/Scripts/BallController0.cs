@@ -35,13 +35,13 @@ public class BallController0 : MonoBehaviour
     private void LaunchBall()
     {
         // reset position and velocity
-        transform.position = UnityEngine.Vector3.zero;
-        rb.linearVelocity = UnityEngine.Vector2.zero;
+        transform.position = Vector3.zero;
+        rb.linearVelocity = Vector2.zero;
 
         // get random direction
         float dirX, dirY = -1;
         dirX = Random.Range(0,2) == 0 ? -1 : 1;
-        UnityEngine.Vector2 dir = new UnityEngine.Vector2(dirX, dirY);
+        Vector2 dir = new Vector2(dirX, dirY);
         dir.Normalize();
 
         // apply force
